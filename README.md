@@ -93,9 +93,9 @@ Example code in c++:
 * float - v;
 
 ## Material Split
-2 bytes - material index
-2 bytes - offset, relative to array of indices
-2 bytes - number of indices
+* 2 bytes - material index
+* 2 bytes - offset, relative to array of indices
+* 2 bytes - number of indices
 
 
 
