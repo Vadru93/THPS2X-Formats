@@ -21,7 +21,7 @@
 
 ## DDM Flags
 * 0xE - fake 3d grass. It uses textures grass[a-g][**] where a-g depends on grass type and ** is the grass layer.
-The grass is always 15 layers.
+The grass is always 16 layers starting from 00.
 
 Example code in c++:
 
