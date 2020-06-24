@@ -165,7 +165,7 @@ This is not looked into that much
 * 4 bytes - zero padding
 
 ## PSX Flags
-
+**Not documented**
 ## Quad Flags
 * QUAD 16 - if not set use triangle a, b, c
 * TRANSPARENT 64
