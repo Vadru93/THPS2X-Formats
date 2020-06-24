@@ -326,7 +326,7 @@ similar format to baddy, used to spawn stat objects etc.
 * [Fixed Vertex](#fixed-vertex) - Position
 * Not sure if they also have angle, atleast I don't use it.
 ## COMMANDPOINT
-This is used for [gaps](#gaps] and other triggerscripts
+This is used for [Gaps](#gaps) and other TriggerScripts
 
 ## SEEDABLEBADDY
 
