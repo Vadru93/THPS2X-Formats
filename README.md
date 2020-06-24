@@ -135,7 +135,7 @@ This is not looked into that much
 ## PSX Object
 * 2 bytes - type
 * 2 bytes - Number of [Fixed Vertex](#fixed-vertex)
-* 2 bytes - number of Unknown each unknown is 8 bytes
+* 2 bytes - number of Unknown each unknown is 8 bytes, maybe something for collision or sound
 * 2 bytes - number of [Quad](#quad)
 * 4 bytes - [PSX Flags](#psx-flags)
 
