@@ -1127,147 +1127,148 @@ Th2xGap Th2xGaps[] = {
 ```
 
 ## Gap Type
-Example code to convert the gap types:
+Example code to convert the gap types, check [Th2Scene.cpp](https://github.com/Vadru93/THPS-Level-Editor/blob/master/THPS%20Level%20Editor/Th2Scene.cpp) for more information:
 ```
 switch (Th2xGaps[j].type)
-                                 {
-                                 case 0x5:
-                                   memcpy(&EndGap[12], &gapId, 4);
-                                   memcpy(&EndGap[73], &Th2xGaps[j].score, 2);
-                                   strcpy((char*)&EndGap[27], Th2xGaps[j].text);
-                                   script->Script("StartGap");
-                                   script->Script("GapID");
-                                   script->Append(0x07);
-                                   script->Script(gapId);
-                                   script->Script("FLAGS");
-                                   script->Append(0x07);
-                                   script->Append(0x05);
-                                   script->Script("PURE_LIP");
-                                   script->Append(0x06);
-                                   script->EndScript();
-                                   break;
-                                 case 0x11://air
-                                 case 0x13:
-                                 case 0x8:
-                                 case 0x17:
-                                   memcpy(&EndGap[12], &gapId, 4);
-                                   memcpy(&EndGap[73], &Th2xGaps[j].score, 2);
-                                   strcpy((char*)&EndGap[27], Th2xGaps[j].text);
-                                   script->Script("StartGap");
-                                   script->Script("GapID");
-                                   script->Append(0x07);
-                                   script->Script(gapId);
-                                   script->Script("FLAGS");
-                                   script->Append(0x07);
-                                   script->Append(0x05);
-                                   script->Script("PURE_AIR");
-                                   script->Append(0x06);
-                                   script->EndScript();
-                                   break;
-                                 case 0x19://grind
-                                 case 0x22:
-                                   gapType = 2;
-                                   memcpy(&EndGapWithLoop[29], &gapId, 4);
-                                   memcpy(&EndGapWithLoop[120], &Th2xGaps[j].score, 2);
-                                   strcpy((char*)&EndGapWithLoop[57], Th2xGaps[j].text);
-                                   sprintf(chc, "StartedGap%d", gapIndex - 1);
-                                   EndId = Checksum(chc);
-                                   globals.push_back(EndId);
-                                   memcpy(&IsTrue[7], &EndId, 4);
-                                   memcpy(&IsTrue[22], &EndId, 4);
-                                   memcpy(&IsTrue[49], &EndId, 4);
-                                   script->Append(IsTrue, sizeof(IsTrue));
-                                   script->Script("StartGap");
-                                   script->Script("GapID");
-                                   script->Append(0x07);
-                                   script->Script(gapId);
-                                   script->Script("FLAGS");
-                                   script->Append(0x07);
-                                   script->Append(0x05);
-                                   script->Script("CANCEL_GROUND");
-                                   script->Script("CANCEL_MANUAL");
-                                   script->Script("REQUIRE_RAIL");
-                                   script->Append(0x06);
-                                   script->EndScript();
-                                   script->Append(EndIF, sizeof(EndIF));
-                                   break;
-                                 case 0x33://wall
-                                   memcpy(&EndGap[12], &gapId, 4);
-                                   memcpy(&EndGap[73], &Th2xGaps[j].score, 2);
-                                   strcpy((char*)&EndGap[27], Th2xGaps[j].text);
-                                   script->Script("StartGap");
-                                   script->Script("GapID");
-                                   script->Append(0x07);
-                                   script->Script(gapId);
-                                   script->Script("FLAGS");
-                                   script->Append(0x07);
-                                   script->Append(0x05);
-                                   script->Script("PURE_WALL");
-                                   script->Append(0x06);
-                                   script->EndScript();
-                                   break;
-                                 case 0x47:
-                                 case 0x1://manual can ollie
-                                   memcpy(&EndGap[12], &gapId, 4);
-                                   memcpy(&EndGap[73], &Th2xGaps[j].score, 2);
-                                   strcpy((char*)&EndGap[27], Th2xGaps[j].text);
-                                   script->Script("StartGap");
-                                   script->Script("GapID");
-                                   script->Append(0x07);
-                                   script->Script(gapId);
-                                   script->Script("FLAGS");
-                                   script->Append(0x07);
-                                   script->Append(0x05);
-                                   script->Script("REQUIRE_MANUAL");
-                                   script->Script("CANCEL_GROUND");
-                                   script->Script("CANCEL_WALL");
-                                   script->Script("CANCEL_RAIL");
-                                   script->Append(0x06);
-                                   script->EndScript();
-                                   break;
-                                 case 0x27://manual can't ollie
-                                   memcpy(&EndGap[12], &gapId, 4);
-                                   memcpy(&EndGap[73], &Th2xGaps[j].score, 2);
-                                   strcpy((char*)&EndGap[27], Th2xGaps[j].text);
-                                   script->Script("StartGap");
-                                   script->Script("GapID");
-                                   script->Append(0x07);
-                                   script->Script(gapId);
-                                   script->Script("FLAGS");
-                                   script->Append(0x07);
-                                   script->Append(0x05);
-                                   script->Script("PURE_MANUAL");
-                                   script->Append(0x06);
-                                   script->EndScript();
-                                   break;
-                                 case 0x2://ground
-                                   memcpy(&EndGap[12], &gapId, 4);
-                                   memcpy(&EndGap[73], &Th2xGaps[j].score, 2);
-                                   strcpy((char*)&EndGap[27], Th2xGaps[j].text);
-                                   script->Script("StartGap");
-                                   script->Script("GapID");
-                                   script->Append(0x07);
-                                   script->Script(gapId);
-                                   script->Script("FLAGS");
-                                   script->Append(0x07);
-                                   script->Append(0x05);
-                                   script->Script("PURE_GROUND");
-                                   script->Append(0x06);
-                                   script->EndScript();
-                                   break;
-                                 default:
-                                   memcpy(&EndGap[12], &gapId, 4);
-                                   memcpy(&EndGap[73], &Th2xGaps[j].score, 2);
-                                   strcpy((char*)&EndGap[27], Th2xGaps[j].text);
-                                   script->Script("StartGap");
-                                   script->Script("GapID");
-                                   script->Append(0x07);
-                                   script->Script(gapId);
-                                   script->Script("FLAGS");
-                                   script->Append(0x07);
-                                   script->Append(0x05);
-                                   script->Script("PURE_AIR");
-                                   script->Append(0x06);
-                                   script->EndScript();
-                                   break;
+{
+  case 0x5:
+    memcpy(&EndGap[12], &gapId, 4);
+    memcpy(&EndGap[73], &Th2xGaps[j].score, 2);
+    strcpy((char*)&EndGap[27], Th2xGaps[j].text);
+    script->Script("StartGap");
+    script->Script("GapID");
+    script->Append(0x07);
+    script->Script(gapId);
+    script->Script("FLAGS");
+    script->Append(0x07);
+    script->Append(0x05);
+    script->Script("PURE_LIP");
+    script->Append(0x06);
+    script->EndScript();
+    break;
+  case 0x11://air
+  case 0x13:
+  case 0x8:
+  case 0x17:
+    memcpy(&EndGap[12], &gapId, 4);
+    memcpy(&EndGap[73], &Th2xGaps[j].score, 2);
+    strcpy((char*)&EndGap[27], Th2xGaps[j].text);
+    script->Script("StartGap");
+    script->Script("GapID");
+    script->Append(0x07);
+    script->Script(gapId);
+    script->Script("FLAGS");
+    script->Append(0x07);
+    script->Append(0x05);
+    script->Script("PURE_AIR");
+    script->Append(0x06);
+    script->EndScript();
+    break;
+  case 0x19://grind
+  case 0x22:
+    gapType = 2;
+    memcpy(&EndGapWithLoop[29], &gapId, 4);
+    memcpy(&EndGapWithLoop[120], &Th2xGaps[j].score, 2);
+    strcpy((char*)&EndGapWithLoop[57], Th2xGaps[j].text);
+    sprintf(chc, "StartedGap%d", gapIndex - 1);
+    EndId = Checksum(chc);
+    globals.push_back(EndId);
+    memcpy(&IsTrue[7], &EndId, 4);
+    memcpy(&IsTrue[22], &EndId, 4);
+    memcpy(&IsTrue[49], &EndId, 4);
+    script->Append(IsTrue, sizeof(IsTrue));
+    script->Script("StartGap");
+    script->Script("GapID");
+    script->Append(0x07);
+    script->Script(gapId);
+    script->Script("FLAGS");
+    script->Append(0x07);
+    script->Append(0x05);
+    script->Script("CANCEL_GROUND");
+    script->Script("CANCEL_MANUAL");
+    script->Script("REQUIRE_RAIL");
+    script->Append(0x06);
+    script->EndScript();
+    script->Append(EndIF, sizeof(EndIF));
+    break;
+  case 0x33://wall
+    memcpy(&EndGap[12], &gapId, 4);
+    memcpy(&EndGap[73], &Th2xGaps[j].score, 2);
+    strcpy((char*)&EndGap[27], Th2xGaps[j].text);
+    script->Script("StartGap");
+    script->Script("GapID");
+    script->Append(0x07);
+    script->Script(gapId);
+    script->Script("FLAGS");
+    script->Append(0x07);
+    script->Append(0x05);
+    script->Script("PURE_WALL");
+    script->Append(0x06);
+    script->EndScript();
+    break;
+  case 0x47:
+  case 0x1://manual can ollie
+    memcpy(&EndGap[12], &gapId, 4);
+    memcpy(&EndGap[73], &Th2xGaps[j].score, 2);
+    strcpy((char*)&EndGap[27], Th2xGaps[j].text);
+    script->Script("StartGap");
+    script->Script("GapID");
+    script->Append(0x07);
+    script->Script(gapId);
+    script->Script("FLAGS");
+    script->Append(0x07);
+    script->Append(0x05);
+    script->Script("REQUIRE_MANUAL");
+    script->Script("CANCEL_GROUND");
+    script->Script("CANCEL_WALL");
+    script->Script("CANCEL_RAIL");
+    script->Append(0x06);
+    script->EndScript();
+    break;
+  case 0x27://manual can't ollie
+    memcpy(&EndGap[12], &gapId, 4);
+    memcpy(&EndGap[73], &Th2xGaps[j].score, 2);
+    strcpy((char*)&EndGap[27], Th2xGaps[j].text);
+    script->Script("StartGap");
+    script->Script("GapID");
+    script->Append(0x07);
+    script->Script(gapId);
+    script->Script("FLAGS");
+    script->Append(0x07);
+    script->Append(0x05);
+    script->Script("PURE_MANUAL");
+    script->Append(0x06);
+    script->EndScript();
+    break;
+  case 0x2://ground
+    memcpy(&EndGap[12], &gapId, 4);
+    memcpy(&EndGap[73], &Th2xGaps[j].score, 2);
+    strcpy((char*)&EndGap[27], Th2xGaps[j].text);
+    script->Script("StartGap");
+    script->Script("GapID");
+    script->Append(0x07);
+    script->Script(gapId);
+    script->Script("FLAGS");
+    script->Append(0x07);
+    script->Append(0x05);
+    script->Script("PURE_GROUND");
+    script->Append(0x06);
+    script->EndScript();
+    break;
+  default:
+    memcpy(&EndGap[12], &gapId, 4);
+    memcpy(&EndGap[73], &Th2xGaps[j].score, 2);
+    strcpy((char*)&EndGap[27], Th2xGaps[j].text);
+    script->Script("StartGap");
+    script->Script("GapID");
+    script->Append(0x07);
+    script->Script(gapId);
+    script->Script("FLAGS");
+    script->Append(0x07);
+    script->Append(0x05);
+    script->Script("PURE_AIR");
+    script->Append(0x06);
+    script->EndScript();
+    break;
+}
 ```
