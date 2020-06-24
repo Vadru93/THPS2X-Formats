@@ -266,26 +266,47 @@ The trigger nodes has 21 different types, these are the original names from Demo
 
 
 ## Node Types
+
 ## BADDY
+
 ## CRATE
-# POINT
+
+## POINT
+
 ## AUTOEXEC
+
 ## POWERUP
+
 ## COMMANDPOINT
+
 ## SEEDABLEBADDY
+
 ## RESTART
+
 ## BARREL
+
 ## RAILDEF
+
 ## RAILPOINT
+
 ## TRICKOB
+
 ## CAMPT
+
 ## GOALOB
+
 ## AUTOEXEC2
+
 ## MYST
+
 ## TERMINATOR
+
 ## LIGHT
+
 ## OFFLIGHT
+
 ## SCRIPTPOINT
+
 ## CAMERAPATH
 
 
