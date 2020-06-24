@@ -71,33 +71,7 @@
 The grass is always 16 layers starting from 00.
 
 Example code in c++:
-
-       `
-       switch(flags & 0xE)
-       {
-       case 2:
-          sprintf(material_name, "grassa%02u", layer);
-          break;
-        case 4:
-          sprintf(material_name, "grassb%02u", layer);
-          break;
-        case 6:
-          sprintf(material_name, "grassc%02u", layer);
-          break;
-        case 8:
-          sprintf(material_name, "grassd%02u", layer);
-          break;
-        case 10:
-          sprintf(material_name, "grasse%02u", layer);
-          break;
-        case 12:
-          sprintf(material_name, "grassf%02u", layer);
-          break;
-        case 14:
-          sprintf(material_name, "grassg%02u", layer);
-          break;
-        }
-`
+```sprintf(material_name, "grass%s%02u", 'a'+ flag >> 5,  layer);```
           
 
 
