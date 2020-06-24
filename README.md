@@ -1,9 +1,9 @@
 # THPS2X-Formats
 
 ## The THPS2X Levels have 4 files
-* .DDM - containing material information
+* [.DDM](#ddm) - containing material information
 * .DDX - containing textures
-* .psx - containing mesh data
+* [.psx](#psx) - containing mesh data
 * .trg - containing script data
 
 
