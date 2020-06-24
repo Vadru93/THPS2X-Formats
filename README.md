@@ -149,9 +149,9 @@ This is not looked into that much
 * When you have an angle it's calculated like this:
 ```
       //full circle is 4096(divider for Fixed Vertex) since level is flipped need - on all axes but y needs to be rotated 180 degree after.
-      angle.x = -((D3DX_PI / 2048.0f) * ((float)(int)((short*)x - 2048.0f));
-      angle.y = -((D3DX_PI / 2048.0f) * ((float)(int)((short*)y - 2048.0f)) + D3DX_PI;//180 degree
-      angle.z = -((D3DX_PI / 2048.0f) * ((float)(int)((short*)z - 2048.0f));
+      angle.x = -((D3DX_PI / 2048.0f) * ((float)(int)((short)x - 2048.0f));
+      angle.y = -((D3DX_PI / 2048.0f) * ((float)(int)((short)y - 2048.0f)) + D3DX_PI;//180 degree
+      angle.z = -((D3DX_PI / 2048.0f) * ((float)(int)((short)z - 2048.0f));
 ```
 
 
