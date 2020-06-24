@@ -66,28 +66,6 @@
 * 2 bytes - offset, relative to array of indices
 * 2 bytes - number of indices
 
-
-
-# .PSX
-The `.PSX` contains collision data and since in THPS3 collision data and mesh data use shared vertices I use the [PSX Object](#psx-object) vertices when importing.
-However for later games you can probably use [DDM Object](#ddm-object) for collision and [PSX Object](#psx-object) for mesh.
-* [PSX Header](#psx-header)
-* Array of [Position](#fixed-vertex) -  the position of the object
-* Array of [PSX Objects](#psx-object)
-
-
-## PSX Header
-* 4 bytes - version
-* 4 bytes - RGB offset
-* 4 bytes - number of [PSX Object](#psx-object)
-
-## PSX Object
-
-
-
-
-
-
 ## DDM Flags
 * 0xE - fake 3d grass. It uses textures grass[a-g][**] where a-g depends on grass type and ** is the grass layer.
 The grass is always 16 layers starting from 00.
@@ -124,4 +102,53 @@ Example code in c++:
 
 
 
+
+
+
+
+# .PSX
+The `.PSX` contains collision data and since in THPS3 collision data and mesh data use shared vertices I use the [PSX Object](#psx-object) vertices when importing.
+However for later games you can probably use [DDM Object](#ddm-object) for collision and [PSX Object](#psx-object) for mesh.
+* [PSX Header](#psx-header)
+* Array of [PSX Object Position](#psx-object-position)
+* 4 bytes - Number of [PSX Object Header](#psx-object-header), [PSX Object](#psx-object)
+* Array of [PSX Object Header](#psx-object-header)
+* Array of [PSX Object](#psx-object)
+
+
+## PSX Header
+* 4 bytes - version
+* 4 bytes - RGB offset
+* 4 bytes - number of [PSX Object Position](#psx-object-position)
+
+## PSX Object Position
+This is not looked into that much
+* 4 bytes - unknown
+* [Fixed Vertex](#fixed-vertex) - Position of object, should move both [DDM Object](#ddm-object) and [PSX Object](#psx-object)
+* 12 bytes - unknown
+* 4 bytes - index, this index links both to [DDM Object](#ddm-object) and [PSX Object](#psx-object)
+* 10 bytes - unknown
+
+## PSX Object Header
+* 4 bytes - offset, relative to begining of file
+
+## PSX Object
+* 2 bytes - type
+* 2 bytes - Number of [Fixed Vertex](#fixed-vertex)
+* 2 bytes - number of Unknown each unknown is 8 bytes
+* 2 bytes - number of [Quad](#quad)
+* 4 bytes - [PSX Flags](#psx-flags)
+
+
+
+## Fixed Vertex
+The divider for Fixed Vertex is `4096` for scale I divide by `2.833`
+* 2 bytes - x 
+* 2 bytes - y
+* 2 bytes - z
+
+
+## Quad
+
+## PSX Flags
 
