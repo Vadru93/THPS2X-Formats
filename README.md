@@ -110,7 +110,7 @@ Example code in c++:
 The `.PSX` contains collision data and since in THPS3 collision data and mesh data use shared vertices I use the [PSX Object](#psx-object) vertices when importing.
 However for later games you can probably use [DDM Object](#ddm-object) for mesh and [PSX Object](#psx-object) for collision. If the [DDM Object](#ddm-object) points to the same index as [PSX Object](#psx-object) but has different checksum, you can rename the [PSX Object](#psx-object) to `"DDM Object Name_Collision"`
 * [PSX Header](#psx-header)
-* Array of [PSX Object Position](#psx-object-position)
+* Array of [Object Position](#object-position)
 * 4 bytes - Number of [PSX Object Header](#psx-object-header), [PSX Object](#psx-object)
 * Array of [PSX Object Header](#psx-object-header)
 * Array of [PSX Object](#psx-object)
@@ -119,9 +119,9 @@ However for later games you can probably use [DDM Object](#ddm-object) for mesh 
 ## PSX Header
 * 4 bytes - version
 * 4 bytes - RGB offset
-* 4 bytes - number of [PSX Object Position](#psx-object-position)
+* 4 bytes - number of [Object Position](#object-position)
 
-## PSX Object Position
+## Object Position
 This is not looked into that much
 * 4 bytes - unknown
 * [Fixed Vertex](#fixed-vertex) - Position of object, should move both [DDM Object](#ddm-object) and [PSX Object](#psx-object)
