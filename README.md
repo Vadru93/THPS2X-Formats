@@ -245,6 +245,7 @@ The trigger nodes has 21 different types, these are the original names from Demo
 #define CAMERAPATH 0x3E9
 ```
 * [TRG Header](#trg-header)
+* Array of [Trigger Node Header ](#trigger-node-header)
 * Array of [Trigger Node](#trigger-node)
 
 ## TRG Header
