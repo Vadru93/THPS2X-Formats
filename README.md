@@ -46,9 +46,8 @@
 * 64 bytes - name
 * 64 bytes - texture name there are 3 different logo textures that cannot be found in the .DDX file, it's `D_logo01`, `D_logo11` and `D_logo21`
 * 4 bytes - draw order
-* 4 bytes - material id
-* float[3] - unknown maybe some color?
-* 4 bytes - unknown
+* 4 bytes - diffuse color
+* float[4] - unknown maybe some color?
 
 ## DDM Vertex
 * float - x need to multiply by -1 because level is flipped
