@@ -8,14 +8,17 @@
 
 
 # .DDM
+* [DDM Header](#ddm-header)
+* Array of [DDM Object Header](#ddm-object-header)
+* Array of [DDM Object](#ddm-object)
 
-## Header
+## DDM Header
 
 * 4 bytes - version
 * 4 bytes - unknown, maybe number of materials?
-* 4 bytes - number of objects
+* 4 bytes - number of [DDM Object Header](#ddm-object-header), [DDM Object](#ddm-object)
 
-## Object Header
+## DDM Object Header
 * 4 bytes - offset to object, counting from begining of file
 * 4 bytes - size
 
@@ -53,23 +56,23 @@ Example code in c++:
 `
           
 
-## Object
+## DDM Object
 * 4 bytes - index, this is the index linking the object to .psx, however sometimes it seems cannot find the ddm object by index so when loading the objects in .psx should first loop throught ddm objects and check if find the index, else check if find the checksum.
 * 4 bytes - checksum
 * float - anim speed X
 * float - anim speed Y
 * float - unknown
 * 4 bytes - unknown
-* 4 bytes - DDM Flags, see above
+* 4 bytes - [DDM Flags](#ddm-flags)
 * 64 bytes - object name
 * 32 bytes - unknown, maybe some bounding box?
-* 4 bytes - numeber of vertices
-* 4 bytes - number of indices
-* 4 bytes - number of materials
-* Array of materials - check Material below
-* Array of vertices - check DDM Vertex below
-* Array of indices - each index is 2 bytes
-* Array of Material Splits - check Material Split below
+* 4 bytes - Number of [Vertices](#ddm-vertex)
+* 4 bytes - Number of indices
+* 4 bytes - Number of [Materials](#material)
+* Array of [Materials](#material)
+* Array of [Vertices](#ddm-vertex)
+* Array of Indices - each index is 2 bytes
+* Array of [Material Splits](#material-split)
 
 ## Material
 * 64 bytes - name
@@ -96,6 +99,21 @@ Example code in c++:
 * 2 bytes - number of indices
 
 
+
+# .PSX
+The `.PSX` contains collision data and since in THPS3 collision data and mesh data use shared vertices I use the [PSX Object](#psx-object) vertices when importing.
+However for later games you can probably use [DDM Object](#ddm-object) for collision and [PSX Object](#psx-object) for mesh.
+* [PSX Header](#psx-header)
+* Array of [Position](#fixed-vertex) -  the position of the object
+* Array of [PSX Objects](#psx-object)
+
+
+## PSX Header
+* 4 bytes - version
+* 4 bytes - RGB offset
+* 4 bytes - number of [PSX Object](#psx-object)
+
+## PSX Object
 
 
 
