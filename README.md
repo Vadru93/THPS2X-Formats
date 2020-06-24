@@ -22,39 +22,7 @@
 * 4 bytes - offset to object, counting from begining of file
 * 4 bytes - size
 
-## DDM Flags
-* 0xE - fake 3d grass. It uses textures grass[a-g][**] where a-g depends on grass type and ** is the grass layer.
-The grass is always 16 layers starting from 00.
 
-Example code in c++:
-
-       `
-       switch(flags & 0xE)
-       {
-       case 2:
-          sprintf(material_name, "grassa%02u", layer);
-          break;
-        case 4:
-          sprintf(material_name, "grassb%02u", layer);
-          break;
-        case 6:
-          sprintf(material_name, "grassc%02u", layer);
-          break;
-        case 8:
-          sprintf(material_name, "grassd%02u", layer);
-          break;
-        case 10:
-          sprintf(material_name, "grasse%02u", layer);
-          break;
-        case 12:
-          sprintf(material_name, "grassf%02u", layer);
-          break;
-        case 14:
-          sprintf(material_name, "grassg%02u", layer);
-          break;
-        }
-`
-          
 
 ## DDM Object
 * 4 bytes - index, this is the index linking the object to .psx, however sometimes it seems cannot find the ddm object by index so when loading the objects in .psx should first loop throught ddm objects and check if find the index, else check if find the checksum.
@@ -115,6 +83,44 @@ However for later games you can probably use [DDM Object](#ddm-object) for colli
 
 ## PSX Object
 
+
+
+
+
+
+## DDM Flags
+* 0xE - fake 3d grass. It uses textures grass[a-g][**] where a-g depends on grass type and ** is the grass layer.
+The grass is always 16 layers starting from 00.
+
+Example code in c++:
+
+       `
+       switch(flags & 0xE)
+       {
+       case 2:
+          sprintf(material_name, "grassa%02u", layer);
+          break;
+        case 4:
+          sprintf(material_name, "grassb%02u", layer);
+          break;
+        case 6:
+          sprintf(material_name, "grassc%02u", layer);
+          break;
+        case 8:
+          sprintf(material_name, "grassd%02u", layer);
+          break;
+        case 10:
+          sprintf(material_name, "grasse%02u", layer);
+          break;
+        case 12:
+          sprintf(material_name, "grassf%02u", layer);
+          break;
+        case 14:
+          sprintf(material_name, "grassg%02u", layer);
+          break;
+        }
+`
+          
 
 
 
