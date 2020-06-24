@@ -260,6 +260,7 @@ The trigger nodes has 21 different types, these are the original names from Demo
 
 ## Trigger Node
 * 2 bytes - type, see above
+The links have different location in different types, but if nothing else is stated it looks like this and the padding check is always needed no matter where the links are.
 * 2 bytes - number of links
 * Array of links each link is 2 bytes
 * 2 bytes - padding, only added if needed. After reading links check `if(file_position % 4 != 0)`, that means you have padding
@@ -269,16 +270,62 @@ The trigger nodes has 21 different types, these are the original names from Demo
 ## Node Types
 
 ## BADDY
+* Baddy have different type of commands, the only command look into is 0x192.
+* The models are stored in the skybox.
+* Baddy node have the links 4 bytes further down
+* 2 bytes - baddy type
+* 2 bytes - padding
+* Then links same as [Trigger Node](#trigger-node)
+* [Fixed Vertex](#fixed-vertex) - Position
+* [Fixed Vertex](#fixed-vertex) - Unknown
+* [Fixed Vertex](#fixed-vertex) - Angle
+**The remaining data is undocumented**
+To get the object checksum that you should place, loop through remaining bytes of the node:
+```
+nodeSize = node+1->offset - offset;
+nodeSize -= bytes read in node;
+while (nodeSize)
+        {
+          if (((WORD*)node)[0] == 0x212F)//place model found
+          {
+            node += 2;
+            placeModel = true;
+            break;
+          }
+          node++;
+          nodeSize--;
+        }
+        
+if(placeModel)
+{
+    if (((WORD*)node)[0] == 0x0000)//check for padding
+            node += 2;
+}
+
+```
+**Now we continue the baddy information**
+* 4 bytes checksum, links to checksum in [PSX Object](#psx-object) and [DDM Object](#ddm-object)
+
+
+
 
 ## CRATE
+this is used to shatter objects
+* 4 bytes - checksum, links to [PSX Object](#psx-object) and [DDM Object](#ddm-object)
 
 ## POINT
+**Not documentated**
 
 ## AUTOEXEC
-
+**Not documentated**
 ## POWERUP
-
+similar format to baddy, used to spawn stat objects etc.
+* 4 bytes type
+* then links
+* [Fixed Vertex](#fixed-vertex) Position
+* Not sure if they also have angle, atleast I don't use it.
 ## COMMANDPOINT
+This is used for gaps and other triggerscripts
 
 ## SEEDABLEBADDY
 
