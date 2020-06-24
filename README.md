@@ -1,5 +1,5 @@
 # THPS2X-Formats
-
+**Credit to DCxDemo for figuring out most of this**
 ## The THPS2X Levels have 4 files
 * [.DDM](#ddm) - containing material information
 * .DDX - containing textures
