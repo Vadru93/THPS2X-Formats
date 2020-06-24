@@ -142,10 +142,17 @@ This is not looked into that much
 
 
 ## Fixed Vertex
-The divider for Fixed Vertex is `4096` for scale I divide by `2.833`
+* The divider for Fixed Vertex is `4096` for scale I divide by `2.833`
 * 2 bytes - x 
 * 2 bytes - y
 * 2 bytes - z
+* When you have an angle it's calculated like this:
+```
+      //full circle is 4096(divider for Fixed Vertex) since level is flipped need - on all axes but y needs to be rotated 180 degree after.
+      angle.x = -((D3DX_PI / 2048.0f) * ((float)(int)((short*)x - 2048.0f));
+      angle.y = -((D3DX_PI / 2048.0f) * ((float)(int)((short*)y - 2048.0f)) + D3DX_PI;//180 degree
+      angle.z = -((D3DX_PI / 2048.0f) * ((float)(int)((short*)z - 2048.0f));
+```
 
 
 ## Quad
