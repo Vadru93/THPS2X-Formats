@@ -16,8 +16,6 @@
 * 4 bytes - number of objects
 
 ## Object Header
-* 4 bytes - checksum
-* 4 bytes - index, this is the index of the object in .psx, however sometimes it seems cannot find the ddm object by index so when loading the objects in .psx should first loop throught ddm objects and check if find the index, else check if find the checksum.
 * 4 bytes - offset to object, counting from begining of file
 * 4 bytes - size
 
@@ -56,7 +54,7 @@ Example code in c++:
           
 
 ## Object
-* 4 bytes - index
+* 4 bytes - index, this is the index linking the object to .psx, however sometimes it seems cannot find the ddm object by index so when loading the objects in .psx should first loop throught ddm objects and check if find the index, else check if find the checksum.
 * 4 bytes - checksum
 * float - anim speed X
 * float - anim speed Y
