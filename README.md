@@ -326,38 +326,47 @@ similar format to baddy, used to spawn stat objects etc.
 * [Fixed Vertex](#fixed-vertex) - Position
 * Not sure if they also have angle, atleast I don't use it.
 ## COMMANDPOINT
-This is used for [Gaps](#gaps) and other TriggerScripts
+* This is used for [Gaps](#gaps) and other TriggerScripts
+* it's kinda of complicated to explain it all, check [Th2Scene.cpp](https://github.com/Vadru93/THPS-Level-Editor/blob/master/THPS%20Level%20Editor/Th2Scene.cpp) for more information.
 
 ## SEEDABLEBADDY
 
 ## RESTART
+* [Fixed Vertex](#fixed-vertex) - Position
+* [Fixed Vertex](#fixed-vertex) - unknown
+* [Fixed Vertex](#fixed-vertex) - Angle
 
 ## BARREL
 
 ## RAILDEF
+Rails, not sure about different between RAILDEF and RAILPOINT
+* [Fixed Vertex](#fixed-vertex) - Position
+Not sure if also have angles, I don't use them
 
 ## RAILPOINT
+* See [RAILDEF](#raildef)
 
 ## TRICKOB
-
+Same as TrickObject in later games, to get Cluster you need to check the links
+* 4 bytes - checksum, links to [PSX Object](#psx-object) and [DDM Objecct](#ddm-object)
 ## CAMPT
-
+**Not documentated**
 ## GOALOB
-
+**Not documentated**
 ## AUTOEXEC2
-
+**Not documentated**
 ## MYST
-
+**Not documentated**
 ## TERMINATOR
-
+**Not documentated**
 ## LIGHT
-
+**Not documentated**
 ## OFFLIGHT
-
+**Not documentated**
 ## SCRIPTPOINT
-
+**Not documentated**
 ## CAMERAPATH
-
+**Not documentated**
 
 ## Gaps
 The gap names are stored in the exe, the format for how they are stored are:
