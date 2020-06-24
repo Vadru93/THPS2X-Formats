@@ -271,7 +271,7 @@ The links have different location in different types, but if nothing else is sta
 
 ## BADDY
 * Baddy have different type of commands, the only command look into is 0x192.
-* The models are stored in the skybox.
+* This commands spawns a model. The models are stored in the skybox.
 * Baddy node have the links 4 bytes further down
 * 2 bytes - baddy type
 * 2 bytes - padding
@@ -279,6 +279,7 @@ The links have different location in different types, but if nothing else is sta
 * [Fixed Vertex](#fixed-vertex) - Position
 * [Fixed Vertex](#fixed-vertex) - Unknown
 * [Fixed Vertex](#fixed-vertex) - Angle
+*
 **The remaining data is undocumented**
 To get the object checksum that you should place, loop through remaining bytes of the node:
 ```
@@ -320,12 +321,12 @@ this is used to shatter objects
 **Not documentated**
 ## POWERUP
 similar format to baddy, used to spawn stat objects etc.
-* 4 bytes type
-* then links
-* [Fixed Vertex](#fixed-vertex) Position
+* 4 bytes - type
+* then links, same as in [Trigger Node](#triger-node)
+* [Fixed Vertex](#fixed-vertex) - Position
 * Not sure if they also have angle, atleast I don't use it.
 ## COMMANDPOINT
-This is used for gaps and other triggerscripts
+This is used for [gaps](#gaps] and other triggerscripts
 
 ## SEEDABLEBADDY
 
