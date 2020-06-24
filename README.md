@@ -163,4 +163,52 @@ The divider for Fixed Vertex is `4096` for scale I divide by `2.833`
 * QUAD 16 - if not set use triangle a, b, c
 * TRANSPARENT 64
 ## Collision Flags
+* It's not that well documentated yet so I will just provide the code I use to convert the flags.
+* To make collision work corectly you also need to change the physics Wall_Non_Skatable_Angle
+```
+faceInfo.flags = 0x0001;//Set Skatable
+          faceInfo.flags |= 0x0200;
+
+          if (GetBit(collFlags, 8))
+          {
+
+            if (!GetBit(collFlags, 7))
+            {
+              faceInfo.flags = 0x0005;
+            }
+            else
+            {
+              faceInfo.flags = 0x0003;
+            }
+            if (collFlags & 0x0400)
+              faceInfo.flags |= 0x0400;
+            faceInfo.flags |= 0x0100;
+          }
+          if (GetBit(collFlags, 5))
+          {
+            faceInfo.flags |= 0x0009;
+            faceInfo.flags &= ~0x0002;
+          }
+          else if (GetBit(collFlags, 6) && !GetBit(collFlags, 8))
+          {
+            faceInfo.flags |= 0x0018;
+            faceInfo.flags &= ~0x0001;
+            faceInfo.flags &= ~0x0002;
+            //faceInfo.flags = 0x0510;
+          }
+          else if (GetBit(collFlags, 1))
+          {
+            faceInfo.flags &= ~0x0001;
+            faceInfo.flags |= 0x0050;
+          }
+          else if (GetBit(collFlags, 0))
+          {
+            faceInfo.flags = 0x0510;
+          }
+          if (GetBit(collFlags, 3))
+          {
+            faceInfo.flags |= 0x0040;
+          }
+          mesh->AddFace(b, a, c, &faceInfo);
+```
 
