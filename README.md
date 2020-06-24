@@ -149,6 +149,18 @@ The divider for Fixed Vertex is `4096` for scale I divide by `2.833`
 
 
 ## Quad
+* 4 bytes - [Quad Flags](#quad-flags)
+* 4 bytes a, b, c, d
+* 4 bytes - color index for a, b, c, d
+* 4 bytes - [Collision Flags](#collision-flags)
+* 4 bytes - Material Index, linked to the [Material](#material) in ddm
+* 2 * 8 bytes - uv for a, b, c, d
+* 4 bytes - zero padding
 
 ## PSX Flags
+
+## Quad Flags
+* QUAD 16 - if not set use triangle a, b, c
+* TRANSPARENT 64
+## Collision Flags
 
